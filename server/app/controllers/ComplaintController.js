@@ -20,7 +20,7 @@ class ComplaintController {
         try {
             await ComplaintModel.find({}, (errs, complaints) => {
                 res.send(complaints)
-            });
+            }).clone();
         } catch (err) {
             console.log(err);
             res.status(500).send({
