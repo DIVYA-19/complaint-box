@@ -18,7 +18,7 @@ class ComplaintController {
 
     static async getAllComplaints(req, res) {
         try {
-            ComplaintModel.find({}, (errs, complaints) => {
+            await ComplaintModel.find({}, (errs, complaints) => {
                 res.send(complaints)
             });
         } catch (err) {
@@ -33,7 +33,7 @@ class ComplaintController {
     static async getComplaint(req, res) {
         try {
             const complaintId = req.params.complaintId;
-            ComplaintModel.find({ _id: complaintId }, (err, complaint) => {
+            await ComplaintModel.find({ _id: complaintId }, (err, complaint) => {
                 if (!complaint) res.send(`no complaint with id ${complaintId}`)
                 else res.send(complaint);
             });
@@ -49,7 +49,7 @@ class ComplaintController {
     static async removeComplaint(req, res) {
         try {
             const complaintId = req.params.complaintId;
-            ComplaintModel.deleteOne({ _id: complaintId }, (err, { deletedCount }) => {
+            await ComplaintModel.deleteOne({ _id: complaintId }, (err, { deletedCount }) => {
                 if (!err && deletedCount > 0) res.send(`removed complaint with id ${complaintId}`)
                 else res.send(`no complaint with id ${complaintId}`);
             });
@@ -65,7 +65,7 @@ class ComplaintController {
     static async getComplaintsByCategory(req, res) {
         try {
             const category = req.params.category;
-            ComplaintModel.find({ category: category }, (err, complaints) => {
+            await ComplaintModel.find({ category: category }, (err, complaints) => {
                 if (err) {
                     throw "error"
                 }
