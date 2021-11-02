@@ -44,9 +44,9 @@ const createRefreshToken = async user => {
 const verifyToken = async token => {
     try {
         const data = await jwt.verify(token, config.jwtSecret);
-
         return data;
     } catch (err) {
+        console.log(err)
         return false;
     }
 }
