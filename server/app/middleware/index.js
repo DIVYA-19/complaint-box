@@ -16,9 +16,10 @@ class Authorize {
                 res.status(400).send({
                     message: "token is invalid or expired"
                 })
+            } else {
+                req.userId = verifyToken.id;
+                next();
             }
-            req.userId = verifyToken.id;
-            return next();
         } else {
             res.status(404).send({
                 message: 'headers are missing!!!'
