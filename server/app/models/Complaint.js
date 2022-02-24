@@ -33,13 +33,13 @@ const ComplaintSchema = new mongoose.Schema(
         }],
         address: {
             type: String,
-            // required: true,
+            required: true,
             trim: true,
             maxlength: 100
         },
         pincode: {
             type: String,
-            // required: true,
+            required: true,
             trim: true
         },
         imageUrls: [{
