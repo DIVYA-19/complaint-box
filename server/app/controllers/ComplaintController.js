@@ -1,19 +1,37 @@
 const ComplaintModel = require('../models/Complaint')
 const config = require("../config/config")
+const utils = require("../utils")
 
 class ComplaintController {
     static async createComplaint(req, res) {
+        var complaint_id = await utils.generateComplaintId();
         const complaint = new ComplaintModel({
+            complaint_id,
             title: req.body.title,
             desc: req.body.desc,
             created_by: req.userId,
             category: req.body.category,
-            status: 'open'
+            status: 'open',
+            pincode: req.body.pincode,
+            address: req.body.address
         })
 
         await complaint.save();
 
         res.json({ status: "complaint created" })
+    }
+
+    static async getTotalCount(req, res) {
+        try {
+            let count = await utils.totalCountOfComplaints();
+            console.log(count);
+            res.send(count);
+        } catch (err) {
+            console.log(err);
+            res.status(500).send({
+                message: 'Something went wrong'
+            });
+        }
     }
 
     static async getAllComplaints(req, res) {

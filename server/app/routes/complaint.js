@@ -10,6 +10,10 @@ router.post(
     ComplaintController.createComplaint
 );
 
+router.get('/totalCount',
+    Authorize.check,
+    ComplaintController.getTotalCount)
+
 router.get(
     '/complaints',
     Authorize.check,
