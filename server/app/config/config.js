@@ -5,5 +5,5 @@ module.exports = {
     jwtSecret: process.env.JWT_SECRET,
     refreshTokenSecret: process.env.REFRESH_TOKEN_SECRET,
     expireToken: process.env.EXPIRES,
-    statusValues: ["open", "closed", "pending"]
+    states: ["open", "closed", "pending", "in progess"]
 }

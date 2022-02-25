@@ -101,9 +101,9 @@ class ComplaintController {
         try {
             const complaintId = req.params.complaintId;
             const statusId = req.params.statusId;
-            await ComplaintModel.findOneAndUpdate({ _id: complaintId }, {status: config.statusValues[statusId - 1]});
+            await ComplaintModel.findOneAndUpdate({ complaint_id: complaintId }, {status: config.states[statusId - 1]});
 
-            res.sendStatus(200);
+            res.send(`status updated for ${complaintId} to ${config.states[statusId - 1]}`)
         } catch (err) {
             console.log(err);
             res.status(500).send({
