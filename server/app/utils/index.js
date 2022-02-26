@@ -3,7 +3,6 @@ const ComplaintModel = require('../models/Complaint')
 const totalCountOfComplaints = async () => {
     try {
         var count = await ComplaintModel.count({})
-        console.log(count)
         return { count };
     } catch (err) {
         console.log(err);
@@ -24,7 +23,17 @@ const generateComplaintId = async () => {
     }
 }
 
+const getAllComplaints = async () => {
+    try {
+        var complaints = await ComplaintModel.find({});
+        return complaints;
+    } catch (err) {
+        console.log(err);
+    }
+}
+
 module.exports = {
     totalCountOfComplaints,
-    generateComplaintId
+    generateComplaintId,
+    getAllComplaints
 }

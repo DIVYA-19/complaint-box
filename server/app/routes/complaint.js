@@ -39,9 +39,15 @@ router.get(
 )
 
 router.post(
-    '/complaint/:complaintId/:statusId',
+    '/complaint/:complaintId/:status',
     Authorize.check,
     ComplaintController.updateStatus
+)
+
+router.get(
+    '/complaints/search/:keywords',
+    // Authorize.check,
+    ComplaintController.searchComplaints
 )
 
 module.exports = router

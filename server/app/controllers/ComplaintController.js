@@ -36,9 +36,8 @@ class ComplaintController {
 
     static async getAllComplaints(req, res) {
         try {
-            await ComplaintModel.find({}, (errs, complaints) => {
-                res.send(complaints)
-            }).clone();
+            var complaints = await utils.getAllComplaints();
+            res.send(complaints);
         } catch (err) {
             console.log(err);
             res.status(500).send({
@@ -100,10 +99,43 @@ class ComplaintController {
     static async updateStatus(req, res) {
         try {
             const complaintId = req.params.complaintId;
-            const statusId = req.params.statusId;
-            await ComplaintModel.findOneAndUpdate({ complaint_id: complaintId }, {status: config.states[statusId - 1]});
+            const status = req.params.status;
+            await ComplaintModel.findOneAndUpdate({ complaint_id: complaintId }, {status: status});
 
-            res.send(`status updated for ${complaintId} to ${config.states[statusId - 1]}`)
+            res.send(`status updated for ${complaintId} to ${status}`)
+        } catch (err) {
+            console.log(err);
+            res.status(500).send({
+                message: 'Something went wrong'
+            })
+        }
+    }
+
+    static async searchComplaints(req, res) {
+        try {
+            var complaints = await utils.getAllComplaints();
+            var keywords = req.params.keywords.split(' ');
+            var resultComplaints = [];
+            complaints.map(complaint => {
+                var keyMatchCount = 0;
+                keywords.map(keyword => {
+                    if (complaint.title.includes(keyword)) {
+                        keyMatchCount += 1;
+                    }
+                })
+                if (keyMatchCount > 0) {
+                    resultComplaints.push({complaint, rank: keyMatchCount});
+                }
+            })
+
+            resultComplaints.sort((a, b) => {
+                return b.rank - a.rank;
+            });
+
+            resultComplaints = resultComplaints.map(complaint => complaint.complaint)
+
+            res.send(resultComplaints);
+
         } catch (err) {
             console.log(err);
             res.status(500).send({
