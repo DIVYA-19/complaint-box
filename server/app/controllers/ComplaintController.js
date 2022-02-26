@@ -119,7 +119,7 @@ class ComplaintController {
             complaints.map(complaint => {
                 var keyMatchCount = 0;
                 keywords.map(keyword => {
-                    if (complaint.title.includes(keyword)) {
+                    if (complaint.title.includes(keyword) || complaint.desc.includes(keyword)) {
                         keyMatchCount += 1;
                     }
                 })
