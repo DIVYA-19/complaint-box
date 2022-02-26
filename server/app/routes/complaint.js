@@ -46,7 +46,7 @@ router.post(
 
 router.get(
     '/complaints/search/:keywords',
-    // Authorize.check,
+    Authorize.check,
     ComplaintController.searchComplaints
 )
 
