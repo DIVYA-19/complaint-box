@@ -36,7 +36,17 @@ class ComplaintController {
 
     static async getAllComplaints(req, res) {
         try {
-            var complaints = await utils.getAllComplaints();
+            var status = req.query.status;
+            var pincode = req.query.pincode;
+            var complaints;
+            var query = {}
+            if (status) {
+                query['status'] = status
+            }
+            if (pincode) {
+                query['pincode'] = pincode
+            }
+            complaints = await utils.getAllComplaints(query);
             res.send(complaints);
         } catch (err) {
             console.log(err);

@@ -23,9 +23,9 @@ const generateComplaintId = async () => {
     }
 }
 
-const getAllComplaints = async () => {
+const getAllComplaints = async (query) => {
     try {
-        var complaints = await ComplaintModel.find({});
+        var complaints = await ComplaintModel.find(query);
         return complaints;
     } catch (err) {
         console.log(err);
