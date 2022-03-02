@@ -1,0 +1,31 @@
+.Header {
+    text-align: center;
+}
+
+#logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding-left: 30px;
+}
+
+.tabs {
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+
+}
+
+.tab {
+    display: inline;
+    margin: 0px 35px;
+}
+
+.account-sec {
+    padding-right: 30px;
+}
+
+@media screen and (max-width: 480px) {
+    .account-sec {
+        padding: 12px 0 0 0;
+    }
+}

@@ -1,10 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
+import Complaints from './components/Complaints/Complaints';
+import Header from './components/Header/Header';
+import Summary from './components/Summary/Summary';
 
 function App() {
   return (
     <div className="App">
-      <h4>Complaint-box</h4>
+      <Header />
+      <Summary />
+      <Complaints />
     </div>
   );
 }

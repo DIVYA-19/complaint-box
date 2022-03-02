@@ -1,0 +1,38 @@
+#container {
+    margin-top: 20px;
+}
+
+.col1 {
+    color: white;
+    padding: 15px;
+    border-radius: 5px 0 0 5px;
+    text-align: center;
+}
+
+.col2 {
+    padding: 15px;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 0 0 3px rgb(213, 213, 213);
+    text-align: center;
+}
+
+.heading {
+    color: #736bb0;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.open-summary {
+    color: #dc6668;
+    font-size: 1.2rem;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+.close-summary {
+    color: #37c5dd;
+    font-size: 1.2rem;
+    margin-top: 5px;
+    font-weight: 600;
+}
