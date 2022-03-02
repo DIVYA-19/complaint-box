@@ -11,6 +11,7 @@ class ComplaintController {
             desc: req.body.desc,
             created_by: req.userId,
             category: req.body.category,
+            priority: req.body.priority,
             status: 'open',
             pincode: req.body.pincode,
             address: req.body.address
