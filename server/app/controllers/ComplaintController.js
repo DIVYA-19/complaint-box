@@ -153,6 +153,20 @@ class ComplaintController {
             })
         }
     }
+
+    static async getDistinctValuesForAttribute(req, res) {
+        try{
+            const attributeName = req.params.name;
+            const distinctValues = await ComplaintModel.find().distinct(attributeName);
+
+            res.send(distinctValues);
+        } catch (err) {
+            console.log(err);
+            res.status(500).send({
+                message: 'Something went wrong'
+            })
+        }
+    }
 }
 
 module.exports = ComplaintController;

@@ -51,4 +51,10 @@ router.get(
     ComplaintController.searchComplaints
 )
 
+router.get(
+    '/complaints/attribute/:name/distinct',
+    Authorize.check,
+    ComplaintController.getDistinctValuesForAttribute
+)
+
 module.exports = router
