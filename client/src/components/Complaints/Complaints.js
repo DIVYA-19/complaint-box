@@ -1,5 +1,4 @@
 import * as React from "react";
-import env from "react-dotenv";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -13,7 +12,7 @@ import Select from "@mui/material/Select";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 import "./Complaints.css";
 
@@ -36,7 +35,7 @@ const Complaints = () => {
     priority: "All",
     status: "All",
     pincode: "All",
-    search: ''
+    search: "",
   });
   const [complaints, setComplaints] = React.useState([]);
   const [filteredComplaints, setFilteredComplaints] = React.useState([]);
@@ -46,17 +45,28 @@ const Complaints = () => {
     status: ["All"],
     pincode: ["All"],
   });
-  const [searchText, setSearchText] = React.useState('');
+  const [searchText, setSearchText] = React.useState("");
 
   React.useEffect(() => {
-    fetch(env.API_URL + "api/complaints")
+    console.log(process.env.API_URL);
+    fetch(process.env.API_URL + "api/complaints", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    }) //process.env.API_URL
       .then((res) => res.json())
       .then((res) => {
         setComplaints(res);
         setFilteredComplaints(res);
       });
     Object.keys(dropdownValues).map((attribute) => {
-      fetch(env.API_URL + "api/complaints/attribute/" + attribute + "/distinct")
+      fetch(
+        process.env.API_URL +
+          "api/complaints/attribute/" +
+          attribute +
+          "/distinct"
+      )
         .then((res) => res.json())
         .then((res) => {
           console.log(res);
@@ -72,13 +82,13 @@ const Complaints = () => {
 
   React.useEffect(() => {
     var filtered = complaints.slice();
-    if (filters.search !== '') {
-      fetch(env.API_URL + "api/complaints/search/" + filters.search).then(res => res.json()).then(res => {
-        console.log(res, filters.search)
-        setFilteredComplaints(res)
-      })
-    }
-    else {
+    if (filters.search !== "") {
+      fetch(process.env.API_URL + "api/complaints/search/" + filters.search)
+        .then((res) => res.json())
+        .then((res) => {
+          setFilteredComplaints(res);
+        });
+    } else {
       Object.keys(filters).map((attribute) => {
         if (
           filters[attribute] !== "" &&
@@ -171,14 +181,16 @@ const Complaints = () => {
                     height: "100%",
                     backgroundColor: "#fff",
                     border: "solid 0.4px #c0c0c0",
-                    borderLeft: 'none',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center'
+                    borderLeft: "none",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
                   }}
-                  onClick={(e) => setFilters({...filters, search: searchText})}
+                  onClick={(e) =>
+                    setFilters({ ...filters, search: searchText })
+                  }
                 >
-                  <SearchIcon  fontSize='small' />
+                  <SearchIcon fontSize="small" />
                 </div>
               </div>
             </div>
