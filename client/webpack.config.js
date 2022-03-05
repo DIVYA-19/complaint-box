@@ -39,7 +39,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       "React": "react",
    }),
-   new webpack.DefinePlugin(getClientEnv()),
+  //  new webpack.DefinePlugin(getClientEnv()),
    new webpack.EnvironmentPlugin( { ...process.env } )
   ],
   module: {
