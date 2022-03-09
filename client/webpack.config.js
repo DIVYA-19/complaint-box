@@ -9,13 +9,16 @@ const port = process.env.PORT || 3000;
 const getClientEnv = () => {
   const currentPath = path.join(__dirname);
   const basePath = currentPath + "/.env";
-  const envPath = basePath  + "." + process.env.ENV;
+  const envPath = basePath  + "." + (process.env.ENV || 'production');
+  console.log(envPath)
   const finalPath = fs.existsSync(envPath) ? envPath : basePath;
   const fileEnv = dotenv.config({ path: finalPath }).parsed;
   const envKeys = Object.keys(fileEnv).reduce((prev, next) => {
     prev[`process.env.${next}`] = JSON.stringify(fileEnv[next]);
     return prev;
   }, {});
+
+  console.log(envKeys)
 
   return {
     envKeys
