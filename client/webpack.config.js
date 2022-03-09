@@ -29,8 +29,9 @@ module.exports = {
   mode: "development",
   entry: "./src/index.js",
   output: {
+    path: path.resolve(__dirname, 'dist'),
+    // publicPath: './',
     filename: "bundle.js",
-    path: path.resolve(__dirname, 'dist')
   },
   devtool: "inline-source-map",
   plugins: [
