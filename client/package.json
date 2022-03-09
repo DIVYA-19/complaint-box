@@ -24,8 +24,8 @@
   "scripts": {
     "start": "set PORT=1235 && react-dotenv && react-scripts start",
     "build": "react-scripts build",
-    "dev": "set ENV=development&& webpack serve",
-    "heroku-postbuild": "ENV=production&& webpack"
+    "dev": "set ENV=production&& webpack serve",
+    "heroku-postbuild": "heroku config:set ENV=production&& webpack"
   },
   "eslintConfig": {
     "extends": [
