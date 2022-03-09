@@ -22,9 +22,9 @@
     "webpack": "^4.44.2"
   },
   "scripts": {
-    "start": "set PORT=1235 && react-dotenv && react-scripts start",
-    "build": "react-scripts build",
-    "dev": "set ENV=production&& webpack serve",
+    "start": "set PORT=1235 && npm run build",
+    "dev": "set ENV=development&& webpack serve",
+    "build": "webpack --mode production",
     "heroku-postbuild": "webpack"
   },
   "eslintConfig": {
