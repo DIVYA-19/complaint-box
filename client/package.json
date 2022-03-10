@@ -13,6 +13,8 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "date-fns": "^2.28.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
     "moment": "^2.29.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -22,9 +24,9 @@
     "webpack": "^4.44.2"
   },
   "scripts": {
-    "start": "npm run build",
+    "start": "npm run build && node server.js",
     "dev": "set ENV=development&& webpack serve",
-    "build": "webpack serve --mode production",
+    "build": "webpack --mode production",
     "heroku-postbuild": "webpack"
   },
   "eslintConfig": {
