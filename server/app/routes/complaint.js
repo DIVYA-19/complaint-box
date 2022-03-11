@@ -17,7 +17,7 @@ router.get(
 
 router.get(
     '/complaints',
-    Authorize.check,
+    // Authorize.check,
     ComplaintController.getAllComplaints
 )
 
@@ -47,13 +47,13 @@ router.post(
 
 router.get(
     '/complaints/search/:keywords',
-    Authorize.check,
+    // Authorize.check,
     ComplaintController.searchComplaints
 )
 
 router.get(
     '/complaints/attribute/:name/distinct',
-    Authorize.check,
+    // Authorize.check,
     ComplaintController.getDistinctValuesForAttribute
 )
 
