@@ -25,7 +25,7 @@
   },
   "scripts": {
     "deploy": "webpack --config ./webpack.config.js --progress",
-    "start": "node server.js"
+    "start": "npm run deploy && node server.js"
   },
   "eslintConfig": {
     "extends": [
