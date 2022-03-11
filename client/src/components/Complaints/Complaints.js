@@ -54,7 +54,7 @@ const Complaints = () => {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-    }) //process.env.API_URL
+    })
       .then((res) => res.json())
       .then((res) => {
         setComplaints(res);

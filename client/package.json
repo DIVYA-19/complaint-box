@@ -24,10 +24,8 @@
     "webpack": "^4.44.2"
   },
   "scripts": {
-    "start": "npm run build && node server.js",
-    "dev": "set ENV=development&& webpack serve",
-    "build": "webpack --mode production",
-    "heroku-postbuild": "webpack"
+    "deploy": "webpack --config ./webpack.config.js --progress",
+    "start": "npm run deploy && node server.js"
   },
   "eslintConfig": {
     "extends": [
