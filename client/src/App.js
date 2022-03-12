@@ -1,15 +1,22 @@
-import './App.css';
-import Complaints from './components/Complaints/Complaints';
-import Header from './components/Header/Header';
-import Summary from './components/Summary/Summary';
+import React from "react";
+import "./App.css";
+import Complaints from "./components/Complaints/Complaints";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
+import Signin from "./components/Signin/Signin";
+import Signup from "./components/Signup/Signup";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Summary />
-      <Complaints />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route exact path="/signin" element={<Signin />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/complaints" element={<Complaints />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
