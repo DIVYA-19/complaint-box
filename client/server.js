@@ -10,8 +10,8 @@ app.use(express.static('dist'));
 // console.log(static_path)
 app.set('port', process.env.PORT || 8080);
 
-app.get('/', function(req, res) {
-  res.sendFile('index.html')
+app.get('/**', function(req, res) {
+  res.sendFile(__dirname + '/dist/index.html')
 })
 
 var server = app.listen(app.get('port'), function() {
