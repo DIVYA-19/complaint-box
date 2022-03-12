@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 const getClientEnv = () => {
   const currentPath = path.join(__dirname);
   const basePath = currentPath + "/.env";
-  const envPath = basePath  + "." + (process.env.ENV || 'production');
+  const envPath = basePath  + "." + 'production';
   console.log(envPath)
   const finalPath = fs.existsSync(envPath) ? envPath : basePath;
   const fileEnv = dotenv.config({ path: finalPath }).parsed;
@@ -40,6 +40,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       "React": "react",
    }),
+   new webpack.DefinePlugin(getClientEnv()),
    new webpack.EnvironmentPlugin( { ...process.env } )
   ],
   module: {
