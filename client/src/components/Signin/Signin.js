@@ -44,6 +44,7 @@ const Signin = () => {
           placeholder="password"
           size="small"
           value={password}
+          type="password"
           onChange={(e) => setPassword(e.target.value)}
         />
         <Button
