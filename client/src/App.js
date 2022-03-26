@@ -21,6 +21,7 @@ function App() {
       <Router>
         <div className="App">
           <Routes>
+            <Route path="/" element={<Navigate replace to="/complaints" />} />
             <Route path="/signin" element={<Signin />} />
             <Route exact path="/signup" element={<Signup />} />
             <Route element={<RequireAuth />}>
