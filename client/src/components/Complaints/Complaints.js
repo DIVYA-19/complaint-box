@@ -131,7 +131,7 @@ const Complaints = () => {
                       <TextField
                         size="small"
                         {...params}
-                        style={{ marginLeft: "10px", width: "120px"}}
+                        style={{ marginLeft: "10px", width: "120px" }}
                       />
                     )}
                   />
@@ -167,14 +167,7 @@ const Complaints = () => {
                 );
               })}
               <div className="filter" style={{ float: "right" }}>
-                <div
-                  className="search-box"
-                  style={{
-                    marginLeft: "10px",
-                    height: "28px",
-                    display: "flex",
-                  }}
-                >
+                <div className="search-box">
                   <input
                     type="text"
                     value={searchText}
@@ -186,16 +179,7 @@ const Complaints = () => {
                     }}
                   />
                   <div
-                    style={{
-                      padding: "0 2px",
-                      height: "100%",
-                      backgroundColor: "#fff",
-                      border: "solid 0.4px #c0c0c0",
-                      borderLeft: "none",
-                      cursor: "pointer",
-                      display: "flex",
-                      alignItems: "center",
-                    }}
+                    className="icon"
                     onClick={(e) =>
                       setFilters({ ...filters, search: searchText })
                     }

@@ -31,13 +31,30 @@ select {
     overflow-x: auto;
 }
 
+.search-box {
+    margin-left: 10px;
+    height: 28px;
+    display: flex;
+}
+
 .icon {
-    padding: "0 2px";
-    height: "100%";
-    background-color: "#fff";
-    border: "solid 0.4px #c0c0c0";
-    border-left: 'none';
-    cursor: 'pointer';
-    display: 'flex';
-    align-items: 'center';
+    padding: 0 2px;
+    height: 97%;
+    background-color: fff;
+    border: solid 0.4px #c0c0c0;
+    border-left: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    width: 320px;
+    height: 93%;
+    border: solid 0.4px #c0c0c0;
+    padding: 0;
+}
+
+.search-input:focus {
+    border: 1px solid #72b9dd !important;
 }
