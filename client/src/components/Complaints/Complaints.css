@@ -15,6 +15,18 @@
     justify-content: center;
 }
 
+.label {
+    font-size: 15px;
+    color: rgb(120, 120, 120);
+}
+
+select {
+    border-color: #72b9dd;
+    height: 25px;
+    border-radius: 5px;
+    padding: 0px 5px;
+}
+
 .filters {
     overflow-x: auto;
 }

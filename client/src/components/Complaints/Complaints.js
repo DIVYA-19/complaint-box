@@ -9,8 +9,6 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
@@ -133,7 +131,7 @@ const Complaints = () => {
                       <TextField
                         size="small"
                         {...params}
-                        style={{ marginLeft: "10px", width: "150px" }}
+                        style={{ marginLeft: "10px", width: "120px"}}
                       />
                     )}
                   />
@@ -141,27 +139,30 @@ const Complaints = () => {
               </div>
               {Object.keys(dropdownValues).map((filter) => {
                 return (
-                  <div className="filter">
+                  <div className="filter" key={filter}>
                     <div
                       className="label"
                       style={{ textTransform: "capitalize" }}
                     >
                       {filter}
                     </div>
-                    <Select
-                      labelId="demo-simple-select-autowidth-label"
+                    <select
                       id="demo-simple-select-autowidth"
-                      size="small"
-                      style={{ marginLeft: "10px", width: "100px" }}
+                      key={filter}
+                      style={{ marginLeft: "8px", width: "100px" }}
                       value={filters[filter]}
                       onChange={(e) => {
                         setFilters({ ...filters, [filter]: e.target.value });
                       }}
                     >
                       {dropdownValues[filter].map((c) => {
-                        return <MenuItem value={c}>{c}</MenuItem>;
+                        return (
+                          <option value={c} key={c}>
+                            {c}
+                          </option>
+                        );
                       })}
-                    </Select>
+                    </select>
                   </div>
                 );
               })}
