@@ -1,0 +1,113 @@
+.new-complaint-conainer {
+    padding-top: 25px;
+    margin: auto;
+    width: 70%;
+}
+.complaint-id {
+    font-size: 18px;
+    padding-right: 10px;
+    float: left;
+    line-height: 1.8em;
+}
+
+.wrap {
+    display: flex;
+    align-items: center;
+}
+
+.complaint-title {
+    font-size: 18px;
+    color: rgba(0,0,0,.9);
+    color: var(--text-primary-color,rgba(0, 0, 0, .9));
+    padding-right: 10px;
+    width: 70%;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.details {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.header-controls {
+    min-height: 35px;
+    white-space: nowrap;
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: start;
+}
+
+.assigned-to {
+    width: 200px;
+}
+
+.comments-count {
+    margin-right: 45px;
+}
+
+.category {
+    margin-right: 45px;
+}
+
+.save-button {
+    overflow: hidden;
+    /* display: block; */
+    white-space: nowrap;
+    /* margin-left: auto; */
+    /* float: right; */
+}
+
+.desc-input {
+    margin-top: 10px;
+    width: 90%;
+    height: 120px;
+}
+
+.desc {
+    width: 100%;
+}
+
+.title-input {
+    width: 90%;
+    height: 25px;
+}
+
+.save-btn {
+    background-color: rgba(0,120,212,1);
+    border: none;
+    color: #fff;
+    padding: 5px 8px 3px;
+    cursor: pointer;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.properties {
+    margin-top: 20px;
+    display: block;
+}
+
+.properties > .property {
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.property-name {
+    margin: 0px 20px;
+}
+
+.mand-star {
+    color: red;
+}
+
+.error-msg {
+    margin-bottom: 20px;
+}

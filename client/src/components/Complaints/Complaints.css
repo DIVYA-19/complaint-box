@@ -58,3 +58,19 @@ select {
 .search-input:focus {
     border: 1px solid #72b9dd !important;
 }
+
+.create-complaint {
+    border: 1.5px solid #32005c;
+    border-radius: 5px;
+    padding: 6px 5px;
+    font-size: 15px;
+    color: #32005c;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.create-complaint:hover {
+    background-color: #32005c;
+    color: #fff;
+    transition: 0.5s;
+}

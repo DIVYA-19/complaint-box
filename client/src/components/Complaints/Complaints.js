@@ -15,6 +15,7 @@ import DatePicker from "@mui/lab/DatePicker";
 import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 import "./Complaints.css";
+import { Link } from "react-router-dom";
 
 const header = [
   "Date Received",
@@ -120,6 +121,11 @@ const Complaints = () => {
           >
             <Stack direction="row" spacing={2} className="filters">
               <div className="filter">
+                <Link to="/new-complaint">
+                  <button className="create-complaint">New Complaint</button>
+                </Link>
+              </div>
+              <div className="filter">
                 <div className="label">Date</div>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <DatePicker
@@ -170,13 +176,9 @@ const Complaints = () => {
                 <div className="search-box">
                   <input
                     type="text"
+                    className="search-input"
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
-                    style={{
-                      width: "320px",
-                      height: "93%",
-                      border: "solid 0.4px #c0c0c0",
-                    }}
                   />
                   <div
                     className="icon"

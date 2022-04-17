@@ -8,6 +8,7 @@ import Complaints from "./components/Complaints/Complaints";
 import Signin from "./components/Signin/Signin";
 import Signup from "./components/Signup/Signup";
 import RequireAuth from "./requireAuth";
+import NewComplaint from "./components/NewComplaint/NewComplaint";
 
 function requireAuth() {
   const token = localStorage.getItem("@token");
@@ -30,6 +31,11 @@ function App() {
                 path="/complaints"
                 element={<Complaints />}
                 onEnter={requireAuth}
+              />
+              <Route
+                exact
+                path="/new-complaint"
+                element={<NewComplaint />}
               />
             </Route>
             {/* <Route path="*" element={<NotFound />} /> */}
