@@ -10,11 +10,6 @@ import Signup from "./components/Signup/Signup";
 import RequireAuth from "./requireAuth";
 import NewComplaint from "./components/NewComplaint/NewComplaint";
 
-function requireAuth() {
-  const token = localStorage.getItem("@token");
-  console.log("requie auth ", token);
-  if (!token) <Navigate path="/signin" />;
-}
 
 function App() {
   return (
@@ -30,7 +25,6 @@ function App() {
                 exact
                 path="/complaints"
                 element={<Complaints />}
-                onEnter={requireAuth}
               />
               <Route
                 exact

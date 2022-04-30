@@ -1,7 +1,6 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { connect } from 'react-redux'
 
-function RequireAuth({ isLoggedIn }) {
+function RequireAuth() {
     let location = useLocation();
     let user = localStorage.getItem('user');
     user = JSON.parse(user);
@@ -17,11 +16,4 @@ function RequireAuth({ isLoggedIn }) {
     return <Outlet />;
   }
 
-  function mapStateToProps(state, props) {
-    console.log("in require auth", state)
-    return {
-      isLoggedIn: state.data.isLoggedIn
-    }
-  }
-
-  export default connect(mapStateToProps)(RequireAuth);
+export default RequireAuth;
