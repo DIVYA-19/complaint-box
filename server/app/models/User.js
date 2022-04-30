@@ -31,7 +31,12 @@ const UserSchema = new mongoose.Schema(
         },
         refreshTokens: [
             {
-                type: String
+                token: {
+                    type: String
+                },
+                expiryDate: {
+                    type: String
+                }
             }
         ],
         address: {
