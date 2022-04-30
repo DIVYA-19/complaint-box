@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import "./Signup.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import APIServices from "../../services/apiServices";
 
 const Signup = () => {
   var navigate = useNavigate();
@@ -11,25 +12,11 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const signup = () => {
-    fetch(process.env.API_URL + "api/auth/signup/", {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        name,
-        password,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res) {
-          navigate("/signin");
-        }
-      });
+  const signup = async () => {
+    var userCreated = await APIServices.signup({ email, name, password });
+    if (userCreated) {
+      navigate("/signin");
+    }
   };
 
   return (

@@ -16,6 +16,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 import "./Complaints.css";
 import { Link } from "react-router-dom";
+import APIServices from "../../services/apiServices";
 
 const header = [
   "Date Received",
@@ -48,47 +49,27 @@ const Complaints = () => {
   });
   const [searchText, setSearchText] = React.useState("");
 
-  React.useEffect(() => {
-    console.log(process.env.API_URL);
-    fetch(process.env.API_URL + "api/complaints", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setComplaints(res);
-        setFilteredComplaints(res);
-      });
-    Object.keys(dropdownValues).map((attribute) => {
-      fetch(
-        process.env.API_URL +
-          "api/complaints/attribute/" +
-          attribute +
-          "/distinct"
-      )
-        .then((res) => res.json())
-        .then((res) => {
-          console.log(res);
-          console.log(dropdownValues);
-          setDropdownValues((prev) => ({
-            ...prev,
-            [attribute]: [...prev[attribute], ...res],
-          }));
-        });
+  React.useEffect(async () => {
+    const complaintsRes = await APIServices.getComplaints();
+    console.log(complaintsRes);
+    setComplaints(complaintsRes);
+    setFilteredComplaints(complaintsRes);
+
+    Object.keys(dropdownValues).map(async (attribute) => {
+      var attributeDistinctValues =
+        await APIServices.getAttributeDistinctValues(attribute);
+      setDropdownValues((prev) => ({
+        ...prev,
+        [attribute]: [...prev[attribute], ...attributeDistinctValues],
+      }));
     });
-    console.log(dropdownValues);
   }, []);
 
   React.useEffect(() => {
     var filtered = complaints.slice();
     if (filters.search !== "") {
-      fetch(process.env.API_URL + "api/complaints/search/" + filters.search)
-        .then((res) => res.json())
-        .then((res) => {
-          setFilteredComplaints(res);
-        });
+      var complaintsRes = await APIServices.searchComplaints(filters.search);
+      setFilteredComplaints(complaintsRes);
     } else {
       Object.keys(filters).map((attribute) => {
         if (

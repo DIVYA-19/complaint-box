@@ -12,8 +12,9 @@ const Signin = () => {
   const [password, setPassword] = useState("");
 
   const signin = async () => {
-    await props.signin(email, password)
-    if (data.user) {
+    var user = await APIServices.signin({email, password})
+    if (user) {
+      TokenServices.setUser(user);
       navigate("/complaints");
     }
   };

@@ -2,6 +2,7 @@ import "./NewComplaint.css";
 import Alert from "@mui/material/Alert";
 import { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import APIServices from "../../services/apiServices";
 
 const NewComplaint = () => {
   const [description, setDescription] = useState("");
@@ -23,9 +24,7 @@ const NewComplaint = () => {
     pincode: ["002020", "909090"],
   };
 
-  const user = JSON.parse(localStorage.getItem("user")).user;
-
-  const saveComplaint = () => {
+  const saveComplaint = async () => {
     console.log("heloo");
     var msg = "";
 
@@ -55,26 +54,13 @@ const NewComplaint = () => {
         pincode: details.pincode,
         address: details.area,
       };
-      fetch(process.env.API_URL + "api/complaint", {
-        method: "POST",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-          authorization: `Bearer ${user.token}`,
-        },
-        body: JSON.stringify(body),
-      })
-        .then((res) => {
-          if (res.status === 401) {
-            setError("Authentication issue...");
-          } else {
-            navigate("/complaints");
-          }
-        })
-        .catch((e) => {
-          setError("Something went wron!!! Please try again");
-        });
+
+      const newComplaintCreated = await APIServices.createNewComplaint(body);
+      if (newComplaintCreated) {
+        navigate("/complaints");
+      } else {
+        setError("Something went wrong. Please try again...");
+      }
     }
   };
 
