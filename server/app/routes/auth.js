@@ -20,8 +20,8 @@ router.post(
 )
 
 router.post(
-    '/refresh-token',
-    AuthController.getRefreshToken
+    'auth/refresh-token',
+    AuthController.refreshToken
 )
 
 module.exports = router
