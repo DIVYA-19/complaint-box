@@ -50,23 +50,25 @@ class APIServices {
   }
 
   async signup(data) {
-    var userCreated = false;
-    fetch(process.env.API_URL + "api/auth/signup/", {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+    return new Promise((resolve, reject) => {
+        fetch(process.env.API_URL + "api/auth/signup/", {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((res) => res.json())
+            .then((res) => {
+                console.log(res.status, res)
+              if (res.status == "success") {
+                    resolve(true);
+              } else {
+                    reject(false);
+              }
+            });
     })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.status == 200) {
-          userCreated = true;
-        }
-      });
-
-    return userCreated;
   }
 
   async createNewComplaint(data) {
