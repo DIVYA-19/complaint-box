@@ -65,7 +65,7 @@ const Complaints = () => {
     });
   }, []);
 
-  React.useEffect(() => {
+  React.useEffect(async () => {
     var filtered = complaints.slice();
     if (filters.search !== "") {
       var complaintsRes = await APIServices.searchComplaints(filters.search);
