@@ -35,19 +35,24 @@ class AuthController {
   }
 
   static async signup(req, res) {
-    const userExisted = await UserModel.findOne({ email: req.body.email });
-    if (userExisted) {
+    try {
+        const userExisted = await UserModel.findOne({ email: req.body.email });
+        if (userExisted) {
+        }
+
+        const user = new UserModel({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        });
+
+        await user.save();
+
+        res.status(200).json({ status: "success" });
+    } catch (e) {
+        console.log(e);
+        res.status(500).json({ status: "Something went wrong" });
     }
-
-    const user = new UserModel({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-    });
-
-    await user.save();
-
-    res.status(200).json({ status: "success" });
   }
 
   static async logout(req, res) {
